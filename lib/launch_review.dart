@@ -22,4 +22,9 @@ class LaunchReview {
       'show_toast': showToast
     });
   }
+  
+  static void launchBrower({String url}) async {
+    await _channel.invokeMethod(
+        'launchBrower', {'url': url});
+  }
 }
