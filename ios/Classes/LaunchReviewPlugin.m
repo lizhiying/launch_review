@@ -48,7 +48,7 @@
 
             NSURL* itunesURL = [NSURL URLWithString:iTunesLink];
             if ([[UIApplication sharedApplication] canOpenURL:itunesURL]) {
-              [[UIApplication sharedApplication] openURL:itunesURL];
+                [[UIApplication sharedApplication] openURL:itunesURL options:@{} completionHandler:nil];
             }
 
             result(nil);
@@ -66,7 +66,8 @@
         } else {
             NSURL* appURL = [NSURL URLWithString:appURLString];
             if ([[UIApplication sharedApplication] canOpenURL:appURL]) {
-                [[UIApplication sharedApplication] openURL:appURL];
+                [[UIApplication sharedApplication] openURL:appURL options:@{} completionHandler:nil];
+            }
         }
     } else {
         result(FlutterMethodNotImplemented);
