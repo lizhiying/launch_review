@@ -53,6 +53,21 @@
 
             result(nil);
         }
+    } else if ([@"launchBrower" isEqualToString:call.method]) {
+        NSString *appURLString = call.arguments[@"url"];
+        if (appURLString == (NSString *)[NSNull null]) {
+            result([FlutterError errorWithCode:@"ERROR"
+                                       message:@"App url cannot be null"
+                                       details:nil]);
+        } else if ([appURLString length] == 0) {
+            result([FlutterError errorWithCode:@"ERROR"
+                                       message:@"Empty app url"
+                                       details:nil]);
+        } else {
+            NSURL* appURL = [NSURL URLWithString:appURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:appURL]) {
+                [[UIApplication sharedApplication] openURL:appURL];
+        }
     } else {
         result(FlutterMethodNotImplemented);
     }
