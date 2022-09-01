@@ -23,7 +23,7 @@ class LaunchReview {
     });
   }
   
-  static void launchBrower({String url}) async {
+  static void launchBrower({required String url}) async {
     await _channel.invokeMethod(
         'launchBrower', {'url': url});
   }
